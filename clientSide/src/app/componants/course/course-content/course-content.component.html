@@ -1,0 +1,59 @@
+<section class="course_details_area pt-5">
+  <div class="container">
+    <div class="row course_details_inner">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          Featured
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item point" *ngFor="let item of playlist" (click)="changItem(item.link)">
+            {{item.linkName}}
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-8">
+        <div class="c_details_img">
+          <iframe width="750" height="409" id="myframe"
+           title="YouTube video player" frameborder="0" class="responsive-iframe"
+           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+          <!-- <iframe width="750" height="400" class="responsive-iframe" src="https://www.youtube.com/embed/6QAELgirvjs?list=PLDoPjvoNmBAw_t_XWUFbBX-c9MafPk9ji">
+          </iframe> -->
+        </div>
+        <mat-tab-group class=" mb-5">
+          <mat-tab label="Course Information">
+            <div class="comments-area">
+              <!-- <h4>05 Comments</h4> -->
+              <div class="comment-list">
+                <div class="single-comment justify-content-between d-flex">
+                  <div class="user justify-content-between d-flex">
+                    <div class="thumb">
+                    </div>
+                    <div class="desc">
+                      <h5>{{info?.name}}</h5>
+                      <p class="date">{{info?.time | date:'dd/MM/yyyy HH:mm:ss'}} </p>
+                      <p class="comment">
+                        Instructor Name : {{info?.instructorName}}
+                      </p>
+                      <p class="comment">
+                        Number of videos : {{playlist.length}}
+                      </p>
+                     
+                    </div>
+                  </div>
+                
+                </div>
+              </div>
+              
+            </div>
+           
+          </mat-tab>
+
+
+        </mat-tab-group>
+
+      </div>
+      
+    </div>
+  </div>
+</section>

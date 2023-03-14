@@ -1,0 +1,88 @@
+<section class="course_details_area pt-5">
+  <div class="container">
+    <div class="row course_details_inner">
+      <div class="col-lg-8">
+        <div class="c_details_img">
+          <img class="img-fluid" src="data:image/jpg;base64,{{course.image}}" alt="">
+        </div>
+        <mat-tab-group class="mt-4 mb-5">
+          <mat-tab label="Comments">
+            <div class="comments-area" >
+              <h4> Comments</h4>
+              <div class="comment-list" *ngFor="let comment of newArry" >
+                <div class="single-comment justify-content-between d-flex">
+                  <div class="cjustify-content-between d-flex">
+                    <div class="thumb">
+                      <img width="60px" height="60px" src="data:image/jpg;base64,{{comment.UserImage}}" alt="">
+                    </div>
+                    <div class="desc">
+                      <h5><a href="#">{{comment.UserName}}</a></h5>
+                      <p class="date">{{comment.createdAt| date:'dd/MM/yyyy HH:mm:ss'}} </p>
+                      <p class="comment">
+                        {{comment.comment}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="reply-btn">
+                    <a href="" class="btn-reply text-uppercase">reply</a>
+                  </div>
+                </div>
+              </div> 
+            </div>
+            <div class="comment-form">
+              <h4>Leave a Reply</h4>
+              <form [formGroup]="formReview" (ngSubmit)="addCommint()">
+                <div class="form-group mt-3">
+                  <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege"  formControlName="comment"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+                </div>
+                <button type="submit" class="primary-btn submit_btn mt-3">Post Comment</button>
+              </form>
+            </div>
+          </mat-tab>
+          <mat-tab label="Course Outline">
+            <div class="comments-area">
+              <div class="objctive_text">
+                <ul class="list" style="color:#777777 !important;"*ngFor="let item of course.playlist">
+                  <li class="mb-3"><a href="#" class="link-info" >{{item.linkName}}</a></li>
+                 
+                  
+                </ul>
+              </div>
+            </div>
+
+          </mat-tab>
+        
+          <mat-tab label="Objectives">
+            <div class="comments-area">
+              <div class="objctive_text">
+                <p>{{course.description}}</p>
+              </div>
+            </div>
+
+          </mat-tab>
+
+        </mat-tab-group>
+
+      </div>
+      <div class="col-lg-4">
+        <div class="c_details_list">
+          <ul class="list">
+            <li><a >{{course.name}} Course <span class="pointer">{{course.category}}</span></a></li>
+            <li><a>Trainer’s Name <span class="colo pointer">{{course.instructor}}</span></a></li>
+            <li><a>Numbers of Student <span class="pointer">{{course.noStudents}}</span></a></li>
+            <li><a>Numbers of Rate<span class="pointer">{{course.noRates}}</span></a></li>
+            <li><a>Time of Publish <span class="pointer">{{course.createdAt|date}}</span></a></li>
+            <li><a>Course Rate <span class="pt-3">
+              <app-rating [rate]="userRate" (change)="onRate($event)"></app-rating>
+            </span></a></li><br>
+
+          </ul>
+          <a *ngIf="!isEnrolled" class="main_btn btn btn-primary"(click)="enrollCourse(course._id)">Enroll the Course</a>
+          <a *ngIf="isEnrolled" class="main_btn btn btn-primary" routerLink="/courses/courseContent/{{course._id}}">Go to Course</a>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

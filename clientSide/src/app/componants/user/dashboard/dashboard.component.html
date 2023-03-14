@@ -1,0 +1,49 @@
+<div class="container light-style flex-grow-1 container-p-y">
+
+  <h4 class="font-weight-bold py-3 mb-4">
+    Account settings
+  </h4>
+
+  <div class="card overflow-hidden">
+    <div class="row no-gutters row-bordered row-border-light">
+      <div class="col-md-3 pt-0">
+        <div class="list-group list-group-flush account-settings-links" >
+          <div class="card-body" >
+            <div class="account-settings" >
+              <div class="user-profile">
+                <div class="user-avatar" >
+                  <img *ngIf="user.avatar" src="data:image/jpg;base64,{{user.avatar}}" >
+                  <img *ngIf="!user.avatar" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+                </div>
+                <h5 class="user-name">{{user.name}}</h5>
+                <h6 class="user-email">{{user.mail}}</h6>
+              </div>
+            </div>
+          </div>
+          <div style="border-right: solid .5px rgb(221, 217, 217);">
+        <a class="list-group-item list-group-item-action active" data-toggle="list"
+            routerLink="dashBoard" routerLinkActive="router-link-active">Dashboard</a>
+          
+          <a class="list-group-item list-group-item-action " data-toggle="list"
+            routerLink="general" routerLinkActive="router-link-active" >Info</a>
+          <!-- <a class="list-group-item list-group-item-action" data-toggle="list" 
+          routerLink="details">Info</a> -->
+          <a class="list-group-item list-group-item-action" data-toggle="list" 
+          routerLink="social">Social links</a>
+            <!-- <a class="list-group-item list-group-item-action" data-toggle="list"
+            routerLink="conections">Connections</a> -->
+            <a class="list-group-item list-group-item-action pointer" data-toggle="list"
+            (click)="logout()" routerLink="/user/signin">Log Out</a>
+          </div>
+         <br> 
+      </div>
+      </div>
+      <div class="col-md-9">
+                   <router-outlet></router-outlet>
+
+        
+      </div>
+    </div>
+  </div>
+
+</div>

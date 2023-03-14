@@ -1,0 +1,32 @@
+<div class="col-md-9">
+    <form class="tab-pane fade active show" [formGroup]="socialLinks"  (ngSubmit)="addSocialLinks(socialLinks.value)"  id="account-social-links">
+            <div class="card-body pb-2">
+              <div class="form-group">
+                <label class="form-label">Twitter</label>
+                <input type="text" formControlName="Twitter" #inputTwitter class="form-control" value="{{loginUser.socialLinks[0]?.Twitter}}">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Facebook</label>
+                <input type="text"  formControlName="Facebook" #inputFacebook class="form-control" value="{{loginUser.socialLinks[1]?.Facebook}}">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Google+</label>
+                <input type="text" formControlName="Google" #inputGoogle class="form-control" value="{{loginUser.socialLinks[2]?.Google}}">
+              </div>
+              <div class="form-group">
+                <label class="form-label">LinkedIn</label>
+                <input type="text" formControlName="LinkedIn" #inputLinkedIn class="form-control" value="{{loginUser.socialLinks[3]?.LinkedIn}}">
+              </div>
+              
+              <div class="form-group mt-3">
+                <label class="form-label">GitHub</label>
+                <input type="text" formControlName="GitHub" #inputGitHub class="form-control" value="{{loginUser.socialLinks[4]?.GitHub}}">
+              </div>
+
+              <div class="text-right mt-5 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Save changes</button>&nbsp;
+                <button type="button" class="btn btn-default">Cancel</button>
+              </div>
+            </div>
+          </form>
+</div>
